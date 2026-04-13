@@ -1,20 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+:root {
+  --background: #04100d;
+  --foreground: #f7faf9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: radial-gradient(circle at 20% 20%, #0f172a, #020617);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.14), transparent 28%),
+    radial-gradient(circle at 85% 10%, rgba(34, 197, 94, 0.14), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 20%),
+    linear-gradient(180deg, #04100d 0%, #071714 42%, #03100d 100%);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: rgba(52, 211, 153, 0.22);
   color: white;
 }
 
-.glass {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.1);
+a {
+  text-decoration: none;
 }
 
-.gradient-text {
-  background: linear-gradient(to right, #22c55e, #38bdf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.grid-glow {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+.panel {
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(22px);
+}
+
+.metric-shine {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 20px 60px rgba(0,0,0,0.22);
 }
