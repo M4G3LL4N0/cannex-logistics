@@ -1,159 +1,141 @@
-import Link from "next/link"
-import SiteNav from "@/components/site-nav"
-import { intelligence, kpis, partners, shipments } from "@/lib/mock-data"
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Cannex Logistics — licensed cannabis warehousing and routing",
+  description:
+    "Cannex Logistics is software for licensed cannabis operators: warehouse lots, chain-of-custody transfers, and route coordination. Demo surfaces, not a live network.",
+};
+
+const layers = [
+  {
+    title: "Warehouse lots",
+    body: "Track what is stored, reserved, or on hold by SKU, origin, and licensed facility — temperature and humidity sit next to the lot, not in a side spreadsheet.",
+  },
+  {
+    title: "Chain of custody",
+    body: "Each transfer keeps a visible handoff: who released it, who is moving it, and which license window it has to land in.",
+  },
+  {
+    title: "Route board",
+    body: "Dispatch sees lanes, ETAs, and exception states on one board so growers, extractors, and retailers are not coordinating over text threads.",
+  },
+];
+
+const steps = [
+  "Intake a licensed lot into a hub",
+  "Reserve or hold it against a transfer",
+  "Dispatch a compliant route",
+  "Close custody at the receiving license",
+];
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
-      <div className="grid-glow absolute inset-0 opacity-20" />
-      <SiteNav />
+    <div className="cannex-home">
+      <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
+        <Link href="/" className="text-sm font-semibold tracking-[0.22em] uppercase text-emerald-100">
+          Cannex
+        </Link>
+        <nav className="flex items-center gap-4 text-sm text-white/70">
+          <Link href="/how-it-works" className="hover:text-white">
+            How it works
+          </Link>
+          <a
+            href="mailto:?subject=Cannex%20Logistics%20operator%20briefing&body=I%20want%20a%20briefing%20on%20the%20licensed%20warehousing%20and%20routing%20software."
+            className="rounded-full bg-emerald-300 px-4 py-2 font-semibold text-emerald-950"
+          >
+            Request a briefing
+          </a>
+        </nav>
+      </header>
 
-      <section className="mx-auto max-w-7xl px-6 pb-24 pt-14 md:pb-32 md:pt-24">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <main>
+        <section className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-8 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:pt-16">
           <div>
-            <div className="inline-flex rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.26em] text-emerald-200">
-              Cannabis infrastructure layer
-            </div>
-
-            <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-[0.95] tracking-tight md:text-7xl">
-              Warehouse, routing, compliance, and B2B network software for the cannabis supply chain.
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/62 md:text-lg">
-              CannexLogistics connects growers, distributors, extractors, retailers, and transport operators through a premium
-              operating layer built for secure storage, reliable transfers, live visibility, and scalable compliance.
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200">
+              Licensed cannabis logistics
             </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
+            <h1 className="mt-4 max-w-xl text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl">
+              Warehouse the lot. Route the transfer. Close custody.
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-white/70 sm:text-lg">
+              Cannex Logistics is a command surface for licensed growers, distributors,
+              extractors, retailers, and transport operators. It is a working product
+              demo for warehousing, routing, and compliance visibility — not a live
+              statewide network.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="mailto:?subject=Cannex%20Logistics%20operator%20briefing&body=I%20want%20a%20briefing%20on%20the%20licensed%20warehousing%20and%20routing%20software."
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-amber-300 px-6 text-sm font-semibold text-stone-950"
+              >
+                Request an operator briefing
+              </a>
               <Link
                 href="/app"
-                className="rounded-full border border-emerald-400/30 bg-emerald-400/12 px-6 py-3 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-400/20"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-semibold text-white"
               >
-                Launch platform
+                Open the demo platform
               </Link>
-              <a
-                href="#why"
-                className="rounded-full border border-white/12 bg-white/6 px-6 py-3 text-sm font-semibold text-white/82 transition hover:bg-white/10"
-              >
-                Explore system
-              </a>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {kpis.map((item) => (
-                <div key={item.label} className="metric-shine rounded-[24px] border border-white/10 bg-white/6 p-5">
-                  <div className="text-xs uppercase tracking-[0.24em] text-white/42">{item.label}</div>
-                  <div className="mt-3 text-3xl font-semibold">{item.value}</div>
-                  <div className="mt-2 text-sm text-white/48">{item.detail}</div>
-                </div>
-              ))}
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute inset-0 rounded-[36px] bg-[radial-gradient(circle_at_50%_0%,rgba(52,211,153,0.28),transparent_45%),radial-gradient(circle_at_100%_30%,rgba(56,189,248,0.2),transparent_30%)] blur-2xl" />
-            <div className="relative rounded-[36px] border border-white/10 bg-black/20 p-5 backdrop-blur-2xl">
-              <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.24em] text-white/40">Live operational graph</div>
-                    <div className="mt-2 text-2xl font-semibold">California hub mesh</div>
-                  </div>
-                  <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
-                    24 nodes synced
-                  </div>
-                </div>
-
-                <div className="mt-6 grid gap-3">
-                  {shipments.map((shipment) => (
-                    <div key={shipment.id} className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                        <div>
-                          <div className="text-sm font-medium">{shipment.route}</div>
-                          <div className="mt-1 text-xs uppercase tracking-[0.2em] text-white/45">{shipment.id} · {shipment.carrier}</div>
-                        </div>
-                        <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
-                          {shipment.status}
-                        </div>
-                      </div>
-                      <div className="mt-3 text-sm text-white/55">
-                        ETA: {shipment.eta} · Security: {shipment.security}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <section id="why" className="mt-24 grid gap-6 lg:grid-cols-[1fr_1fr]">
-          <div className="rounded-[32px] border border-white/10 bg-white/5 p-8">
-            <div className="text-xs uppercase tracking-[0.24em] text-emerald-200/80">Why Cannex</div>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight">The operating system for fragmented cannabis logistics.</h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-white/60">
-              Most operators still run inventory, storage, transport, and compliance across disconnected vendors and manual workflows.
-              CannexLogistics turns that fragmented stack into one secure network with premium visibility and better unit economics.
+          <aside
+            aria-label="Example dispatch board"
+            className="rounded-[28px] border border-white/10 bg-black/30 p-5"
+          >
+            <p className="text-xs uppercase tracking-[0.22em] text-white/45">
+              Example board — labeled demo
             </p>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <h2 className="mt-2 text-xl font-semibold">Tonight&apos;s transfers</h2>
+            <ul className="mt-5 space-y-3">
               {[
-                "Licensed warehousing + secure handling",
-                "Role-based dashboards for every operator",
-                "Live environmental monitoring",
-                "Transfer, custody, and manifest orchestration",
-                "Routing intelligence across licensed fleets",
-                "Compliance posture visibility by lot and shipment",
-              ].map((item) => (
-                <div key={item} className="rounded-2xl border border-white/10 bg-black/20 p-4 text-sm text-white/72">
-                  {item}
-                </div>
+                ["Hub intake", "Flower lot waiting on temp check"],
+                ["Reserved", "Extract cases staged for a retailer window"],
+                ["In transit", "Pre-roll cartons on a licensed carrier"],
+                ["Hold", "Edibles paused for a paperwork mismatch"],
+              ].map(([state, detail]) => (
+                <li
+                  key={state}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                >
+                  <div className="text-sm font-semibold text-emerald-100">{state}</div>
+                  <div className="mt-1 text-sm text-white/60">{detail}</div>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </aside>
+        </section>
 
-          <div className="rounded-[32px] border border-white/10 bg-white/5 p-8">
-            <div className="text-xs uppercase tracking-[0.24em] text-white/45">Market participants</div>
-            <div className="mt-6 grid gap-4">
-              {partners.map((partner) => (
-                <div key={partner.name} className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                  <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                    <div>
-                      <div className="text-lg font-medium">{partner.name}</div>
-                      <div className="mt-1 text-sm text-white/48">{partner.type} · {partner.market}</div>
-                    </div>
-                    <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70">
-                      {partner.volume}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <section className="border-y border-white/10 bg-black/20">
+          <div className="mx-auto grid max-w-6xl gap-4 px-4 py-12 sm:px-6 md:grid-cols-3">
+            {layers.map((layer) => (
+              <article key={layer.title} className="rounded-3xl border border-white/10 p-6">
+                <h2 className="text-lg font-semibold">{layer.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-white/65">{layer.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="mt-24 rounded-[36px] border border-white/10 bg-white/5 p-8 md:p-10">
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <div className="text-xs uppercase tracking-[0.24em] text-white/40">Intelligence layer</div>
-              <h3 className="mt-3 text-3xl font-semibold tracking-tight">Infrastructure data becomes market leverage.</h3>
-              <p className="mt-4 max-w-xl text-base leading-8 text-white/60">
-                Once storage, transfer, and routing activity sits on a unified operational layer, Cannex can generate decision-grade
-                intelligence around margin, throughput, bottlenecks, and demand patterns.
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {intelligence.map((item) => (
-                <div key={item.title} className="rounded-[28px] border border-white/10 bg-black/20 p-5">
-                  <div className="text-xs uppercase tracking-[0.24em] text-white/40">{item.title}</div>
-                  <div className="mt-4 text-2xl font-semibold">{item.value}</div>
-                  <div className="mt-3 text-sm leading-7 text-white/52">{item.detail}</div>
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <h2 className="text-2xl font-semibold sm:text-3xl">How a transfer moves</h2>
+          <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, i) => (
+              <li key={step} className="rounded-2xl border border-amber-200/20 bg-amber-200/5 p-5">
+                <div className="text-xs uppercase tracking-[0.2em] text-amber-200">
+                  Step {i + 1}
                 </div>
-              ))}
-            </div>
-          </div>
+                <p className="mt-3 text-sm font-medium leading-6">{step}</p>
+              </li>
+            ))}
+          </ol>
         </section>
-      </section>
-    </main>
-  )
+      </main>
+
+      <footer className="border-t border-white/10 px-4 py-8 text-center text-xs text-white/45 sm:px-6">
+        Cannex Logistics · demo software for licensed cannabis logistics · not a live operator network
+      </footer>
+    </div>
+  );
 }
