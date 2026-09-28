@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CustodyWalk } from "@/components/CustodyWalk";
 
 export const metadata: Metadata = {
   title: "Cannex Logistics — licensed cannabis warehousing and routing",
@@ -179,6 +180,7 @@ export default function Home() {
               </li>
             ))}
           </ol>
+          <CustodyWalk steps={steps} />
         </section>
       </main>
 
