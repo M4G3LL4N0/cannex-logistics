@@ -5,7 +5,7 @@ import { CustodyWalk } from "@/components/CustodyWalk";
 export const metadata: Metadata = {
   title: "Cannex Logistics — licensed cannabis warehousing and routing",
   description:
-    "Cannex Logistics is software for licensed cannabis operators: warehouse lots, chain-of-custody transfers, and route coordination. Demo surfaces, not a live network.",
+    "Cannex Logistics gives licensed operators one picture of the lot, the route, and the handoff.",
 };
 
 const layers = [
@@ -87,10 +87,9 @@ export default function Home() {
               Warehouse the lot. Route the transfer. Close custody.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-white/70 sm:text-lg">
-              Cannex Logistics is a command surface for licensed growers, distributors,
-              extractors, retailers, and transport operators. It is a working product
-              demo for warehousing, routing, and compliance visibility — not a live
-              statewide network.
+              Cannex Logistics is the command surface for licensed growers, distributors,
+              extractors, retailers, and transport operators. See the lot, the route,
+              and the handoff before the transfer leaves the building.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -103,7 +102,7 @@ export default function Home() {
                 href="/app"
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-semibold text-white"
               >
-                Open the demo platform
+                Open the preview
               </Link>
             </div>
           </div>
@@ -185,7 +184,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-white/10 px-4 py-8 text-center text-xs text-white/45 sm:px-6">
-        Cannex Logistics · demo software for licensed cannabis logistics · not a live operator network
+        Cannex Logistics · preview · licensed cannabis logistics
       </footer>
     </div>
   );
