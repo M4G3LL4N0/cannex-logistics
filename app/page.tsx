@@ -29,9 +29,36 @@ const steps = [
   "Close custody at the receiving license",
 ];
 
+const transfers = [
+  {
+    state: "Hub intake",
+    detail: "Flower lot waiting on temp check",
+    window: "License window 18:00–22:00",
+    tone: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
+  },
+  {
+    state: "Reserved",
+    detail: "Extract cases staged for a retailer window",
+    window: "Receiving license 7A-4421",
+    tone: "border-amber-200/25 bg-amber-200/10 text-amber-100",
+  },
+  {
+    state: "In transit",
+    detail: "Pre-roll cartons on a licensed carrier",
+    window: "Lane Hub-North → Retail-4",
+    tone: "border-sky-300/25 bg-sky-300/10 text-sky-100",
+  },
+  {
+    state: "Hold",
+    detail: "Edibles paused for a paperwork mismatch",
+    window: "Custody open — not closed",
+    tone: "border-rose-300/25 bg-rose-300/10 text-rose-100",
+  },
+];
+
 export default function Home() {
   return (
-    <div className="cannex-home">
+    <div className="cannex-home min-h-screen">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
         <Link href="/" className="text-sm font-semibold tracking-[0.22em] uppercase text-emerald-100">
           Cannex
@@ -89,25 +116,47 @@ export default function Home() {
             </p>
             <h2 className="mt-2 text-xl font-semibold">Tonight&apos;s transfers</h2>
             <ul className="mt-5 space-y-3">
-              {[
-                ["Hub intake", "Flower lot waiting on temp check"],
-                ["Reserved", "Extract cases staged for a retailer window"],
-                ["In transit", "Pre-roll cartons on a licensed carrier"],
-                ["Hold", "Edibles paused for a paperwork mismatch"],
-              ].map(([state, detail]) => (
+              {transfers.map((row) => (
                 <li
-                  key={state}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                  key={row.state}
+                  className={`rounded-2xl border px-4 py-3 ${row.tone}`}
                 >
-                  <div className="text-sm font-semibold text-emerald-100">{state}</div>
-                  <div className="mt-1 text-sm text-white/60">{detail}</div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-sm font-semibold">{row.state}</div>
+                    <span className="text-[10px] uppercase tracking-[0.16em] text-white/50">
+                      demo
+                    </span>
+                  </div>
+                  <div className="mt-1 text-sm text-white/70">{row.detail}</div>
+                  <div className="mt-2 text-xs text-white/50">{row.window}</div>
                 </li>
               ))}
             </ul>
           </aside>
         </section>
 
-        <section className="border-y border-white/10 bg-black/20">
+        <section className="border-y border-white/10 bg-black/20" aria-label="Custody lane">
+          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+            <p className="text-xs uppercase tracking-[0.22em] text-amber-200/80">
+              Custody lane — labeled demo
+            </p>
+            <ol className="mt-4 grid gap-3 sm:grid-cols-4">
+              {["Licensed hub", "Reserved lot", "Carrier lane", "Receiving license"].map((node, i) => (
+                <li
+                  key={node}
+                  className="relative rounded-2xl border border-emerald-200/20 bg-emerald-300/5 px-4 py-4"
+                >
+                  <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-emerald-200">
+                    0{i + 1}
+                  </div>
+                  <p className="mt-2 text-sm font-medium text-white">{node}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="border-b border-white/10 bg-black/20">
           <div className="mx-auto grid max-w-6xl gap-4 px-4 py-12 sm:px-6 md:grid-cols-3">
             {layers.map((layer) => (
               <article key={layer.title} className="rounded-3xl border border-white/10 p-6">
